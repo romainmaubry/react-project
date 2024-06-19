@@ -1,8 +1,7 @@
-import myImage from './logo.svg';
 const Image=()=>{
     return(
         <>
-        <img src={myImage} alt="Little Lemon"/>
+        <img src="lemon.png" alt="Little Lemon"/>
         </>
     )
 }
