@@ -7,14 +7,12 @@ import Main from './Main.js'
 
 function App() {
   return (
-    <>
-      Homepage
+    <div className="app">
  <Header/>
  <Nav/>
  <Main/>
  <Footer/>
-
-    </>
+    </div>
   );
 }
 
