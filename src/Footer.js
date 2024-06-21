@@ -1,8 +1,8 @@
-const Footer=()=>{
-return(
-    <header>
-      Footer
-    </header>
-)
+const Footer = () => {
+    return (
+        <footer>
+            Footer
+        </footer>
+    )
 }
 export default Footer
