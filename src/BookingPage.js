@@ -1,8 +1,7 @@
-const BookingPage = () => {
+export default function BookingPage(props){
     return (
         <header>
-            BookingPage
+            <BookingForm/>
         </header>
     )
 }
-export default BookingPage
