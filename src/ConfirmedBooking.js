@@ -1,7 +1,7 @@
 const ConfirmedBooking = () => {
     return (
-        <header>The Booking has been confirmed
-        </header>
+        <div>The booking has been confirmed
+        </div>
     )
 }
 export default ConfirmedBooking

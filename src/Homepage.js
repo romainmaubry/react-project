@@ -10,4 +10,5 @@ const Homepage = () => {
         </header>
     )
 }
+
 export default Homepage

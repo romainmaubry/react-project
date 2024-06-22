@@ -1,15 +1,34 @@
 import React, { useState } from "react";
 
-const submitAPI=window.submitAPI;
+function BookingForm({
+   availableTimes,
+   dispatchOnDateChange,
+   submitData
+ }){
 
-function BookingForm(props){
+   const minimumNumberOfGuests = 1;
+   const maximumNumberOfGuests = 10;
+   const occasions = ['Birthday', 'Anniversary'];
 
-    const [date,setDate]=useState("");
-    const [guests,setGuests]=useState("");
+   const defaultTime = availableTimes[0];
+   const [date,setDate]=useState("");
+    const [time, setTime] = useState(defaultTime);
+    const [
+      numberOfGuests, 
+      setNumberGuests
+    ] = useState(minimumNumberOfGuests);
+    const [occasion, setOccasion] = useState(occasions[0]);
+  
+    const handleDateChange = e => {
+      setDate(e.target.value);
+      dispatchOnDateChange(e.target.value);
+    };
+  
+    const handleTimeChange = e => setTime(e.target.value);
 
     const handleSubmit = (e) =>{
     e.preventDefault();
-    submitAPI()
+    submitData({ date, time, numberOfGuests, occasion, });
     setDate("");
     }
 
@@ -22,9 +41,9 @@ const submitStyle={
 return(
 <form onSubmit={handleSubmit} style={submitStyle}>
    <label htmlFor="res-date">Choose date</label>
-   <input type="date" id="res-date" name="Date" value={date} onChange={e => setDate(e)} required/>
+   <input type="date" id="res-date" name="Date" value={date} onChange={handleDateChange} required/>
    <label htmlFor="res-time">Choose time</label>
-   <select id="res-time " required>
+   <select id="res-time "  onChange={handleTimeChange}required>
       <option>17:00</option>
       <option>18:00</option>
       <option>19:00</option>
@@ -33,14 +52,16 @@ return(
       <option>22:00</option>
    </select>
    <label htmlFor="guests">Number of guests</label>
-   <input type="number" placeholder="1" min="1" max="10" id="guests" value={guests} onChange={e => setGuests(e)} required/>
+   <input type="number" placeholder="1" id="guests" value={numberOfGuests}
+          min={minimumNumberOfGuests} 
+          max={maximumNumberOfGuests}  onChange={e => setNumberGuests(e.target.value)} required/>
    <label htmlFor="occasion">Occasion</label>
    <select id="occasion">
       <option>Birthday</option>
       <option>Anniversary</option>
+      onChange={e => setOccasion(e.target.value)}
    </select>
-   <input type="submit" value="Make Your reservation" required/>
-   <button aria-label="On Click" disabled={!date} type="submit">Submit</button>
+   <button type="submit" required>  Make your reservation</button>
 </form>
 )
 }
